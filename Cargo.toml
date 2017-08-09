@@ -1,0 +1,9 @@
+[package]
+name = "left-right"
+version = "0.1.0"
+authors = ["Maxim Zholobak <ghostcheka@gmail.com>"]
+
+[dependencies]
+piston_window = "*"
+find_folder = "*"
+rand = "*"
