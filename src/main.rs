@@ -21,9 +21,8 @@ fn main() {
     while let Some(e) = window.next() {
         match e {
             Input::Update(args) => app.update(args.dt),
-            Input::Release(button) => match button {
-                Button::Keyboard(key) => app.key(key),
-                _ => (),
+            Input::Press(button) => if let Button::Keyboard(key) = button {
+                app.key(key)
             },
             Input::Render(args) => {
                 window.draw_2d(&e, |c, g| { app.render(c, g, args.width, args.height); });

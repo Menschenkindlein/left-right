@@ -120,13 +120,15 @@ impl App {
         let diff = 0.125;
         Format {
             text: text,
-            left: match side {
-                &Side::Left => 0.5 + diff,
-                _ => 0.5 - diff,
+            left: if let &Side::Left = side {
+                0.5 + diff
+            } else {
+                0.5 - diff
             },
-            right: match side {
-                &Side::Right => 0.5 + diff,
-                _ => 0.5 - diff,
+            right: if let &Side::Right = side {
+                0.5 + diff
+            } else {
+                0.5 - diff
             },
         }
     }
