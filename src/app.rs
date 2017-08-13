@@ -167,11 +167,15 @@ impl App {
         }
     }
 
-    pub fn render(&mut self, c: Context, g: &mut G2d, w: u32, h: u32) {
+    pub fn render(&mut self, c: Context, g: &mut G2d) {
         let format = self.format();
 
-        let padding = 20.0;
-        let font_size = 32;
+        let view_size = c.get_view_size();
+        let w = view_size[0];
+        let h = view_size[1];
+
+        let padding = w / 512.0 * 20.0;
+        let font_size = (w / 512.0 * 32.0) as u32;
         let side_width = (w as f64) * 0.5 - padding * 1.5;
         let side_height = (h as f64) - (font_size as f64) - padding * 3.0;
         let side_top_padding = (font_size as f64) + padding * 2.0;
