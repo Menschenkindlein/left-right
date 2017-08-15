@@ -16,13 +16,19 @@ fn main() {
         .for_folder("assets")
         .unwrap();
 
-    let mut app = app::App::new(&window, assets, Box::new(rand::thread_rng()));
+    let ref font = assets.join("FiraSans-Regular.ttf");
+    let factory = window.factory.clone();
+    let texture_settings = TextureSettings::new();
+
+    let mut glyphs = Glyphs::new(font, factory, texture_settings).unwrap();
+
+    let mut app = app::App::new(Box::new(rand::thread_rng()));
 
     while let Some(e) = window.next() {
         e.update(|args| app.update(args.dt));
         e.press(|button| if let Button::Keyboard(key) = button {
             app.key(key)
         });
-        window.draw_2d(&e, |c, g| { app.render(c, g); });
+        window.draw_2d(&e, |c, g| { app.render(c, g, &mut glyphs); });
     }
 }

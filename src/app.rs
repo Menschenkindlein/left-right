@@ -1,4 +1,3 @@
-use std;
 use std::mem;
 
 use piston_window::*;
@@ -31,19 +30,13 @@ struct Format {
 
 pub struct App {
     game_state: GameState,
-    glyphs: Glyphs,
     rng: Box<Rng>,
 }
 
 impl App {
-    pub fn new(window: &PistonWindow, assets: std::path::PathBuf, rng: Box<Rng>) -> App {
-        let ref font = assets.join("FiraSans-Regular.ttf");
-        let factory = window.factory.clone();
-        let texture_settings = TextureSettings::new();
-
+    pub fn new(rng: Box<Rng>) -> App {
         App {
             game_state: GameState::Init,
-            glyphs: Glyphs::new(font, factory, texture_settings).unwrap(),
             rng: rng,
         }
     }
@@ -167,7 +160,7 @@ impl App {
         }
     }
 
-    pub fn render(&mut self, c: Context, g: &mut G2d) {
+    pub fn render(&mut self, c: Context, g: &mut G2d, glyphs: &mut Glyphs) {
         let format = self.format();
 
         let view_size = c.get_view_size();
@@ -184,7 +177,7 @@ impl App {
 
         text::Text::new(font_size).draw(
             &format.text,
-            &mut self.glyphs,
+            glyphs,
             &c.draw_state,
             c.transform.trans(padding, (font_size as f64) + padding),
             g,
