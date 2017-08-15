@@ -113,12 +113,12 @@ impl App {
         let diff = 0.125;
         Format {
             text: text,
-            left: if let &Side::Left = side {
+            left: if let Side::Left = *side {
                 0.5 + diff
             } else {
                 0.5 - diff
             },
-            right: if let &Side::Right = side {
+            right: if let Side::Right = *side {
                 0.5 + diff
             } else {
                 0.5 - diff

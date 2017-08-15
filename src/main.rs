@@ -16,7 +16,7 @@ fn main() {
         .for_folder("assets")
         .unwrap();
 
-    let ref font = assets.join("FiraSans-Regular.ttf");
+    let font = &assets.join("FiraSans-Regular.ttf");
     let factory = window.factory.clone();
     let texture_settings = TextureSettings::new();
 
