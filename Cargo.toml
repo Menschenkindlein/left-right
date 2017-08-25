@@ -1,5 +1,5 @@
 [package]
-name = "left-right"
+name = "left_right"
 version = "0.1.0"
 authors = ["Maxim Zholobak <ghostcheka@gmail.com>"]
 
