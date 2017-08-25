@@ -65,12 +65,11 @@ Let's add something to it.
 
 A common way of organizing Rust binary crates is to have all logic in a library crate, and keep `main.rs` as small as possible. Let's create a file `lib.rs` in the same directory as `main.rs`.
 
-What the game will be. There will be a starting screen, where a player can press `Space` to start a game. After that, there will be a small period of time for the player to prepare, and two rectangles will show up. The player has to see which one is brighter and press the proper arrow button as fast as possible. The time required for the reaction is tracked. Pressing a wrong button, as well as pressing it before the rectangles show up is treated as a failure.
+Let's talk briefly about what the game is about. There is a starting screen, where a player can press `Space` to start a game. After that, there will be a small period of time for the player to prepare, and two rectangles show up. The player has to see which one is brighter and press the proper arrow button as fast as possible. The time required for the reaction is tracked. Pressing a wrong button, as well as pressing it before the rectangles show up is treated as a failure.
 
-Let's define a language to speak about the game. First of all, the game is about sides: left and right. The game will choose one randomly, and then compare it to the player's guess (Note the `derive` directive
+Let's define a language to speak about the game. First of all, the game is about sides: left and right. The game will choose one randomly, and then compare it to the player's guess.
 
 ```rust
-#[derive(PartialEq)]).
 enum Side {
     Left,
     Right,
@@ -145,7 +144,6 @@ pub struct View {
 Note that in order to use `Side` enum in this module we will need to extract it to a separate module `side.rs`.
 
 ```rust
-#[derive(PartialEq)]
 pub enum Side {
     Left,
     Right,
@@ -241,7 +239,7 @@ match side {
 Or we can derive a `Clone` and `Copy` traits for `Side`, and it will be done automatically:
 
 ```rust
-#[derive(PartialEq, Clone, Copy)]
+#[derive(Clone, Copy)]
 pub enum Side {
     Left,
     Right,
