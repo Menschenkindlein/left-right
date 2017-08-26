@@ -12,7 +12,7 @@ As my frontend experience is mostly limited to Elm, I decided to use a similar a
 
 ### Model
 
-The application can have several different states that change in response to user's actions, or simply when time passes. They are represented as an `enum`. The first state is an initial state and it doesn't carry any additional information. The next state is a countdown. It stores the remaining time before the actual game begins. After the countdown, the side is chosen, and the program waits for user input while counting the time it takes for the user to react. After the user input, the program goes to the finished game state that contains the passed time, the originally requested side, and the side chosen by a player. If a player chooses the side during the countdown period, the program goes to a special state - false start.
+The application can have several different states that change in response to user's actions, or simply when time passes. They are represented as an `enum`. The first state is an initial state and it doesn't carry any additional information. The next state is a countdown. It stores the remaining time before the actual game begins. After the countdown, the side is chosen, and the program waits for user input while counting the time it takes for the user to react. After the user input, the program goes to the finished game state that contains the passed time and whether the player has chosen the right side. If a player chooses the side during the countdown period, the program goes to a special state - false start.
 
 ### Update I
 
@@ -24,7 +24,7 @@ There are only three buttons the program understands: space, left arrow, and rig
 
 ### View
 
-To implement view, I decided to use an internal view representation that contains only the text to write at the top of the screen and colors for the left and right rectangle. Thus, I convert the state into this internal format and render the latter physically.
+To implement view, I decided to use an internal view representation that contains only the text to write at the top of the screen and which rectangle should be highlighted if any. Thus, I convert the state into this internal format and render the latter physically.
 
 ## References
 
