@@ -6,12 +6,14 @@ Let's create a binary crate `left_right`:
 cargo new --bin left_right
 ```
 
-For now, the only dependency we need is `piston_window`. Let's add it to `Cargo.toml`:
+For now, the only dependency we need for now is `piston_window`. Let's add it to `Cargo.toml`:
 
 ```toml
 [dependencies]
 piston_window = "*"
 ```
+
+This way we'll get the most recent version of it.<sup><a name="versionsrc" href="#versionfn">1</a></sup>
 
 Now, let's open `main.rs` and write some code.
 
@@ -541,3 +543,7 @@ format!(
 ```
 
 We are done. The final code is available on [github](https://github.com/Menschenkindlein/left-right).
+
+<hr />
+
+<a name="versionfn" href="#versionsrc">1</a> This tutorial was written in a time of a particular version of every used library. I don't want to hardcode all this versions. If it happens that something doesn't work for you and it is cumbersome to adapt the code to the changes in the libraries, you can copy [Cargo.lock](Cargo.lock) file to your project and it will ensure that you have precisely the same versions of libraries as I did in the moment of writing this tutorial.
