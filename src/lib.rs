@@ -19,14 +19,12 @@ enum GameState {
 
 pub struct App {
     game_state: GameState,
-    rng: Box<Rng>,
 }
 
 impl App {
     pub fn new() -> Self {
         App {
             game_state: GameState::Init,
-            rng: Box::new(rand::thread_rng()),
         }
     }
 
@@ -38,7 +36,7 @@ impl App {
                 if time_to_start < 0.0 {
                     self.game_state = GameState::Running {
                         elapsed_time: 0.0,
-                        side: if self.rng.gen() {
+                        side: if rand::thread_rng().gen() {
                             Side::Left
                         } else {
                             Side::Right
