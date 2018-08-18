@@ -36,13 +36,14 @@ impl View {
         clear([0.5, 0.5, 0.5, 1.0], g);
 
         // draw text
-        text::Text::new(font_size).draw(
-            &self.text,
-            glyphs,
-            &c.draw_state,
-            c.transform.trans(padding, (font_size as f64) + padding),
-            g,
-        );
+        text::Text::new(font_size)
+            .draw(
+                &self.text,
+                glyphs,
+                &c.draw_state,
+                c.transform.trans(padding, (font_size as f64) + padding),
+                g,
+            ).unwrap();
 
         // draw left rectangle
         rectangle(
